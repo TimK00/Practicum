@@ -1,0 +1,195 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/25/2023 1:01:25 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="T5700158887"
+  DTS:CreatorName="UTHSCSA\kirkpatrick3"
+  DTS:DTSID="{6F46B6F7-11DC-441A-A0EF-FEC40D974B80}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.113"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{362717FA-FA40-48BD-9A08-62EC7276C933}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Master Common ETL.xml]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{80FA3371-C764-4889-92B0-64A8A6168E6B}"
+      DTS:ObjectName="Master Common ETL.xml">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\Kirkpatrick3\OneDrive - UT Health San Antonio\Desktop\Master Common ETL.xml" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ModifiedInput.xml]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{E9484A5F-3D12-4BC9-A7F8-BE310C9544FD}"
+      DTS:ObjectName="ModifiedInput.xml">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="ModifiedInput.xml" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ModifiedInput.xml 1]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{07C83B83-FB9B-4918-A1A7-3CBE23C971E7}"
+      DTS:ObjectName="ModifiedInput.xml 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\Kirkpatrick3\OneDrive - UT Health San Antonio\Desktop\ModifiedInput.xml" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ModifiedInput.xml.txt]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{D1B84B02-6F1C-4CD3-9EB5-4CA5403030AF}"
+      DTS:ObjectName="ModifiedInput.xml.txt">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\Kirkpatrick3\OneDrive - UT Health San Antonio\Desktop\ModifiedInput.xml.txt" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\XML Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2C4D85AD-4919-409E-B7DC-4455B4C5E032}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="XML Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\XML Data Flow Task\XML Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Extracts data from an XML file. For example, extract catalog data from an XML file that represents catalogs and catalog items. Before using, specify the schema and generate an output for each XML element.;Microsoft Corporation;Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Extracts data from an XML file. For example, extract catalog data from an XML file that represents catalogs and catalog items. Before using, specify the schema and generate an output for each XML element."
+              name="XML Source"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.XmlSourceAdapter</property>
+                <property
+                  dataType="System.String"
+                  description="The XML data used by the XML source adapter."
+                  expressionType="Notify"
+                  name="XMLData">C:\Users\Kirkpatrick3\OneDrive - UT Health San Antonio\Desktop\ModifiedInput.xml</property>
+                <property
+                  dataType="System.String"
+                  description="The variable used by the XML source adapter to specify XML data."
+                  name="XMLDataVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Defines how the XML source adapter gets XML data."
+                  name="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The XML schema definition used by the XML source adapter."
+                  expressionType="Notify"
+                  name="XMLSchemaDefinition">C:\Users\Kirkpatrick3\OneDrive - UT Health San Antonio\Desktop\ModifiedInput.xsd</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Identifies whether or not to use inline schema."
+                  name="UseInlineSchema">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Defines how XML integer types are mapped."
+                  name="XMLIntegerMapping"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.XmlSourceAdapter+XMLIntegerMappingConverter">0</property>
+              </properties>
+              <outputs>
+                <output
+                  refId="Package\XML Data Flow Task\XML Source.Outputs[XML Source Output]"
+                  dangling="true"
+                  name="XML Source Output">
+                  <properties>
+                    <property
+                      dataType="System.Null"
+                      description="Identifies the rowset associated with the output."
+                      name="RowsetID" />
+                  </properties>
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </output>
+              </outputs>
+            </component>
+          </components>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\XML Task"
+      DTS:CreationName="Microsoft.XMLTask"
+      DTS:Description="XML Task"
+      DTS:DTSID="{65948DAA-3A81-4767-B6FE-4A9132C9B5F8}"
+      DTS:ExecutableType="Microsoft.XMLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="XML Task"
+      DTS:TaskContact="XML Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <XMLTaskData
+          OperationType="XSLT"
+          Source="Master Common ETL.xml"
+          SecondOperand="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt; &#xA;&lt;xsl:stylesheet version=&quot;1.0&quot;         xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt; &#xA;  &lt;xsl:output method=&quot;xml&quot; indent=&quot;no&quot; /&gt; &#xA;  &lt;xsl:template match=&quot;/|comment()|processing-instruction()&quot;&gt; &#xA;    &lt;xsl:copy&gt; &#xA;      &lt;xsl:apply-templates /&gt; &#xA;    &lt;/xsl:copy&gt; &#xA;  &lt;/xsl:template&gt; &#xA;  &lt;xsl:template match=&quot;*&quot;&gt; &#xA;    &lt;xsl:element name=&quot;{local-name()}&quot;&gt; &#xA;      &lt;xsl:apply-templates select=&quot;@*|node()&quot; /&gt; &#xA;    &lt;/xsl:element&gt; &#xA;  &lt;/xsl:template&gt; &#xA;  &lt;xsl:template match=&quot;@*&quot;&gt; &#xA;    &lt;xsl:attribute name=&quot;{local-name()}&quot;&gt; &#xA;      &lt;xsl:value-of select=&quot;.&quot; /&gt; &#xA;    &lt;/xsl:attribute&gt; &#xA;  &lt;/xsl:template&gt; &#xA;&lt;/xsl:stylesheet&gt; "
+          SaveOperationResult="True"
+          Destination="ModifiedInput.xml 1"
+          OverwriteDestination="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="174,42"
+          Id="Package\XML Data Flow Task"
+          TopLeft="284,328" />
+        <NodeLayout
+          Size="124,42"
+          Id="Package\XML Task"
+          TopLeft="315,197" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\XML Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="134,42"
+          Id="Package\XML Data Flow Task\XML Source"
+          TopLeft="395,183" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

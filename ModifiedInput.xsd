@@ -1,0 +1,800 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Executable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Property">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:unsignedByte">
+                <xs:attribute name="Name" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="Variables">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="Variable">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="VariableValue">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute name="DataType" type="xs:unsignedByte" use="optional" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                  <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                  <xs:attribute name="IncludeInDebugDump" type="xs:unsignedShort" use="optional" />
+                  <xs:attribute name="Namespace" type="xs:string" use="optional" />
+                  <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+                  <xs:attribute name="EvaluateAsExpression" type="xs:string" use="optional" />
+                  <xs:attribute name="Expression" type="xs:string" use="optional" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="Executables">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Executable">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="Variables" />
+                    <xs:element minOccurs="0" name="Executables">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="0" maxOccurs="unbounded" name="Executable">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element minOccurs="0" name="Variables">
+                                  <xs:complexType>
+                                    <xs:sequence minOccurs="0">
+                                      <xs:element minOccurs="0" maxOccurs="unbounded" name="Variable">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" name="VariableValue">
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <xs:attribute name="DataType" type="xs:unsignedByte" use="optional" />
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                          <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                                          <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                                          <xs:attribute name="IncludeInDebugDump" type="xs:unsignedShort" use="optional" />
+                                          <xs:attribute name="Namespace" type="xs:string" use="optional" />
+                                          <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+                                          <xs:attribute name="EvaluateAsExpression" type="xs:string" use="optional" />
+                                          <xs:attribute name="Expression" type="xs:string" use="optional" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" name="ObjectData">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" name="SqlTaskData">
+                                        <xs:complexType>
+                                          <xs:attribute name="Connection" type="xs:string" use="optional" />
+                                          <xs:attribute name="SqlStatementSource" type="xs:string" use="optional" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" name="pipeline">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" name="components">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element minOccurs="0" maxOccurs="unbounded" name="component">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element minOccurs="0" name="properties">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element minOccurs="0" maxOccurs="unbounded" name="property">
+                                                                <xs:complexType mixed="true">
+                                                                  <xs:sequence minOccurs="0">
+                                                                    <xs:element minOccurs="0" name="arrayElements">
+                                                                      <xs:complexType>
+                                                                        <xs:sequence minOccurs="0">
+                                                                          <xs:element minOccurs="0" maxOccurs="unbounded" name="arrayElement">
+                                                                            <xs:complexType>
+                                                                              <xs:simpleContent>
+                                                                                <xs:extension base="xs:string">
+                                                                                  <xs:attribute name="dataType" type="xs:string" use="optional" />
+                                                                                </xs:extension>
+                                                                              </xs:simpleContent>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                        </xs:sequence>
+                                                                        <xs:attribute name="arrayElementCount" type="xs:unsignedByte" use="optional" />
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                  </xs:sequence>
+                                                                  <xs:attribute name="dataType" type="xs:string" use="optional" />
+                                                                  <xs:attribute name="description" type="xs:string" use="optional" />
+                                                                  <xs:attribute name="expressionType" type="xs:string" use="optional" />
+                                                                  <xs:attribute name="name" type="xs:string" use="optional" />
+                                                                  <xs:attribute name="typeConverter" type="xs:string" use="optional" />
+                                                                  <xs:attribute name="isArray" type="xs:boolean" use="optional" />
+                                                                  <xs:attribute name="state" type="xs:string" use="optional" />
+                                                                  <xs:attribute name="UITypeEditor" type="xs:string" use="optional" />
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element minOccurs="0" name="inputs">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element minOccurs="0" name="input">
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:element minOccurs="0" name="inputColumns">
+                                                                      <xs:complexType>
+                                                                        <xs:sequence>
+                                                                          <xs:element minOccurs="0" maxOccurs="unbounded" name="inputColumn">
+                                                                            <xs:complexType>
+                                                                              <xs:attribute name="refId" type="xs:string" use="optional" />
+                                                                              <xs:attribute name="cachedCodepage" type="xs:unsignedShort" use="optional" />
+                                                                              <xs:attribute name="cachedDataType" type="xs:string" use="optional" />
+                                                                              <xs:attribute name="cachedLength" type="xs:unsignedByte" use="optional" />
+                                                                              <xs:attribute name="cachedName" type="xs:string" use="optional" />
+                                                                              <xs:attribute name="lineageId" type="xs:string" use="optional" />
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                        </xs:sequence>
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                    <xs:element minOccurs="0" name="externalMetadataColumns" />
+                                                                  </xs:sequence>
+                                                                  <xs:attribute name="refId" type="xs:string" use="optional" />
+                                                                  <xs:attribute name="hasSideEffects" type="xs:boolean" use="optional" />
+                                                                  <xs:attribute name="name" type="xs:string" use="optional" />
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element minOccurs="0" name="connections">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element minOccurs="0" name="connection">
+                                                                <xs:complexType>
+                                                                  <xs:attribute name="refId" type="xs:string" use="optional" />
+                                                                  <xs:attribute name="connectionManagerID" type="xs:string" use="optional" />
+                                                                  <xs:attribute name="connectionManagerRefId" type="xs:string" use="optional" />
+                                                                  <xs:attribute name="description" type="xs:string" use="optional" />
+                                                                  <xs:attribute name="name" type="xs:string" use="optional" />
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element minOccurs="0" name="outputs">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element minOccurs="0" maxOccurs="unbounded" name="output">
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:element minOccurs="0" name="outputColumns">
+                                                                      <xs:complexType>
+                                                                        <xs:sequence>
+                                                                          <xs:element minOccurs="0" maxOccurs="unbounded" name="outputColumn">
+                                                                            <xs:complexType>
+                                                                              <xs:attribute name="refId" type="xs:string" use="optional" />
+                                                                              <xs:attribute name="codePage" type="xs:unsignedShort" use="optional" />
+                                                                              <xs:attribute name="dataType" type="xs:string" use="optional" />
+                                                                              <xs:attribute name="externalMetadataColumnId" type="xs:string" use="optional" />
+                                                                              <xs:attribute name="length" type="xs:unsignedByte" use="optional" />
+                                                                              <xs:attribute name="lineageId" type="xs:string" use="optional" />
+                                                                              <xs:attribute name="name" type="xs:string" use="optional" />
+                                                                              <xs:attribute name="specialFlags" type="xs:unsignedByte" use="optional" />
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                        </xs:sequence>
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                    <xs:element minOccurs="0" name="externalMetadataColumns">
+                                                                      <xs:complexType>
+                                                                        <xs:sequence minOccurs="0">
+                                                                          <xs:element minOccurs="0" maxOccurs="unbounded" name="externalMetadataColumn">
+                                                                            <xs:complexType>
+                                                                              <xs:attribute name="refId" type="xs:string" use="optional" />
+                                                                              <xs:attribute name="codePage" type="xs:unsignedShort" use="optional" />
+                                                                              <xs:attribute name="dataType" type="xs:string" use="optional" />
+                                                                              <xs:attribute name="length" type="xs:unsignedByte" use="optional" />
+                                                                              <xs:attribute name="name" type="xs:string" use="optional" />
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                        </xs:sequence>
+                                                                        <xs:attribute name="isUsed" type="xs:string" use="optional" />
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                  </xs:sequence>
+                                                                  <xs:attribute name="refId" type="xs:string" use="optional" />
+                                                                  <xs:attribute name="errorRowDisposition" type="xs:string" use="optional" />
+                                                                  <xs:attribute name="name" type="xs:string" use="optional" />
+                                                                  <xs:attribute name="truncationRowDisposition" type="xs:string" use="optional" />
+                                                                  <xs:attribute name="isErrorOut" type="xs:boolean" use="optional" />
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                      <xs:attribute name="refId" type="xs:string" use="optional" />
+                                                      <xs:attribute name="componentClassID" type="xs:string" use="optional" />
+                                                      <xs:attribute name="description" type="xs:string" use="optional" />
+                                                      <xs:attribute name="name" type="xs:string" use="optional" />
+                                                      <xs:attribute name="usesDispositions" type="xs:boolean" use="optional" />
+                                                      <xs:attribute name="version" type="xs:unsignedByte" use="optional" />
+                                                      <xs:attribute name="contactInfo" type="xs:string" use="optional" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element minOccurs="0" name="paths">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element minOccurs="0" name="path">
+                                                    <xs:complexType>
+                                                      <xs:attribute name="refId" type="xs:string" use="optional" />
+                                                      <xs:attribute name="endId" type="xs:string" use="optional" />
+                                                      <xs:attribute name="name" type="xs:string" use="optional" />
+                                                      <xs:attribute name="startId" type="xs:string" use="optional" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                          <xs:attribute name="version" type="xs:unsignedByte" use="optional" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" name="PropertyExpression">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute name="Name" type="xs:string" use="optional" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" name="Executables">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="unbounded" name="Executable">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" name="Variables">
+                                              <xs:complexType>
+                                                <xs:sequence minOccurs="0">
+                                                  <xs:element minOccurs="0" maxOccurs="unbounded" name="Variable">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element minOccurs="0" name="VariableValue">
+                                                          <xs:complexType>
+                                                            <xs:simpleContent>
+                                                              <xs:extension base="xs:string">
+                                                                <xs:attribute name="DataType" type="xs:unsignedByte" use="optional" />
+                                                              </xs:extension>
+                                                            </xs:simpleContent>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                      <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                                                      <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                                                      <xs:attribute name="IncludeInDebugDump" type="xs:unsignedShort" use="optional" />
+                                                      <xs:attribute name="Namespace" type="xs:string" use="optional" />
+                                                      <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+                                                      <xs:attribute name="EvaluateAsExpression" type="xs:string" use="optional" />
+                                                      <xs:attribute name="Expression" type="xs:string" use="optional" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element minOccurs="0" name="ObjectData">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element minOccurs="0" name="SqlTaskData">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element minOccurs="0" maxOccurs="unbounded" name="ParameterBinding">
+                                                          <xs:complexType>
+                                                            <xs:attribute name="ParameterName" type="xs:unsignedByte" use="optional" />
+                                                            <xs:attribute name="DtsVariableName" type="xs:string" use="optional" />
+                                                            <xs:attribute name="ParameterDirection" type="xs:string" use="optional" />
+                                                            <xs:attribute name="DataType" type="xs:unsignedByte" use="optional" />
+                                                            <xs:attribute name="ParameterSize" type="xs:byte" use="optional" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element minOccurs="0" name="ResultBinding">
+                                                          <xs:complexType>
+                                                            <xs:attribute name="ResultName" type="xs:string" use="optional" />
+                                                            <xs:attribute name="DtsVariableName" type="xs:string" use="optional" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                      <xs:attribute name="Connection" type="xs:string" use="optional" />
+                                                      <xs:attribute name="SqlStmtSourceType" type="xs:string" use="optional" />
+                                                      <xs:attribute name="SqlStatementSource" type="xs:string" use="optional" />
+                                                      <xs:attribute name="ResultType" type="xs:string" use="optional" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element minOccurs="0" name="PropertyExpression">
+                                              <xs:complexType>
+                                                <xs:simpleContent>
+                                                  <xs:extension base="xs:string">
+                                                    <xs:attribute name="Name" type="xs:string" use="optional" />
+                                                  </xs:extension>
+                                                </xs:simpleContent>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element minOccurs="0" name="Executables">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element minOccurs="0" maxOccurs="unbounded" name="Executable">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:choice maxOccurs="unbounded">
+                                                          <xs:element minOccurs="0" name="Variables" />
+                                                          <xs:element minOccurs="0" name="ObjectData">
+                                                            <xs:complexType>
+                                                              <xs:sequence>
+                                                                <xs:element minOccurs="0" name="ExecutePackageTask">
+                                                                  <xs:complexType>
+                                                                    <xs:sequence>
+                                                                      <xs:element minOccurs="0" name="UseProjectReference" type="xs:string" />
+                                                                      <xs:element minOccurs="0" name="PackageName" type="xs:string" />
+                                                                      <xs:element minOccurs="0" maxOccurs="unbounded" name="ParameterAssignment">
+                                                                        <xs:complexType>
+                                                                          <xs:sequence>
+                                                                            <xs:element minOccurs="0" name="ParameterName" type="xs:string" />
+                                                                            <xs:element minOccurs="0" name="BindedVariableOrParameterName" type="xs:string" />
+                                                                          </xs:sequence>
+                                                                        </xs:complexType>
+                                                                      </xs:element>
+                                                                    </xs:sequence>
+                                                                  </xs:complexType>
+                                                                </xs:element>
+                                                                <xs:element minOccurs="0" name="SqlTaskData">
+                                                                  <xs:complexType>
+                                                                    <xs:sequence>
+                                                                      <xs:element minOccurs="0" maxOccurs="unbounded" name="ParameterBinding">
+                                                                        <xs:complexType>
+                                                                          <xs:attribute name="ParameterName" type="xs:unsignedByte" use="optional" />
+                                                                          <xs:attribute name="DtsVariableName" type="xs:string" use="optional" />
+                                                                          <xs:attribute name="ParameterDirection" type="xs:string" use="optional" />
+                                                                          <xs:attribute name="DataType" type="xs:unsignedByte" use="optional" />
+                                                                          <xs:attribute name="ParameterSize" type="xs:byte" use="optional" />
+                                                                        </xs:complexType>
+                                                                      </xs:element>
+                                                                      <xs:element minOccurs="0" name="ResultBinding">
+                                                                        <xs:complexType>
+                                                                          <xs:attribute name="ResultName" type="xs:string" use="optional" />
+                                                                          <xs:attribute name="DtsVariableName" type="xs:string" use="optional" />
+                                                                        </xs:complexType>
+                                                                      </xs:element>
+                                                                    </xs:sequence>
+                                                                    <xs:attribute name="Connection" type="xs:string" use="optional" />
+                                                                    <xs:attribute name="SqlStmtSourceType" type="xs:string" use="optional" />
+                                                                    <xs:attribute name="SqlStatementSource" type="xs:string" use="optional" />
+                                                                    <xs:attribute name="ResultType" type="xs:string" use="optional" />
+                                                                  </xs:complexType>
+                                                                </xs:element>
+                                                              </xs:sequence>
+                                                            </xs:complexType>
+                                                          </xs:element>
+                                                          <xs:element minOccurs="0" maxOccurs="unbounded" name="PropertyExpression">
+                                                            <xs:complexType>
+                                                              <xs:simpleContent>
+                                                                <xs:extension base="xs:string">
+                                                                  <xs:attribute name="Name" type="xs:string" use="optional" />
+                                                                </xs:extension>
+                                                              </xs:simpleContent>
+                                                            </xs:complexType>
+                                                          </xs:element>
+                                                          <xs:element minOccurs="0" name="Executables">
+                                                            <xs:complexType>
+                                                              <xs:sequence>
+                                                                <xs:element minOccurs="0" maxOccurs="unbounded" name="Executable">
+                                                                  <xs:complexType>
+                                                                    <xs:sequence>
+                                                                      <xs:element minOccurs="0" name="Variables" />
+                                                                      <xs:element minOccurs="0" maxOccurs="unbounded" name="PropertyExpression">
+                                                                        <xs:complexType>
+                                                                          <xs:simpleContent>
+                                                                            <xs:extension base="xs:string">
+                                                                              <xs:attribute name="Name" type="xs:string" use="optional" />
+                                                                            </xs:extension>
+                                                                          </xs:simpleContent>
+                                                                        </xs:complexType>
+                                                                      </xs:element>
+                                                                      <xs:element minOccurs="0" name="ObjectData">
+                                                                        <xs:complexType>
+                                                                          <xs:sequence>
+                                                                            <xs:element minOccurs="0" name="ExecutePackageTask">
+                                                                              <xs:complexType>
+                                                                                <xs:sequence>
+                                                                                  <xs:element minOccurs="0" name="UseProjectReference" type="xs:string" />
+                                                                                  <xs:element minOccurs="0" name="PackageName" type="xs:string" />
+                                                                                  <xs:element minOccurs="0" maxOccurs="unbounded" name="ParameterAssignment">
+                                                                                    <xs:complexType>
+                                                                                      <xs:sequence>
+                                                                                        <xs:element minOccurs="0" name="ParameterName" type="xs:string" />
+                                                                                        <xs:element minOccurs="0" name="BindedVariableOrParameterName" type="xs:string" />
+                                                                                      </xs:sequence>
+                                                                                    </xs:complexType>
+                                                                                  </xs:element>
+                                                                                </xs:sequence>
+                                                                              </xs:complexType>
+                                                                            </xs:element>
+                                                                          </xs:sequence>
+                                                                        </xs:complexType>
+                                                                      </xs:element>
+                                                                    </xs:sequence>
+                                                                    <xs:attribute name="refId" type="xs:string" use="optional" />
+                                                                    <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                                                                    <xs:attribute name="Description" type="xs:string" use="optional" />
+                                                                    <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                                                                    <xs:attribute name="ExecutableType" type="xs:string" use="optional" />
+                                                                    <xs:attribute name="LocaleID" type="xs:byte" use="optional" />
+                                                                    <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+                                                                    <xs:attribute name="TaskContact" type="xs:string" use="optional" />
+                                                                  </xs:complexType>
+                                                                </xs:element>
+                                                              </xs:sequence>
+                                                            </xs:complexType>
+                                                          </xs:element>
+                                                          <xs:element minOccurs="0" name="PrecedenceConstraints">
+                                                            <xs:complexType>
+                                                              <xs:sequence>
+                                                                <xs:element minOccurs="0" name="PrecedenceConstraint">
+                                                                  <xs:complexType>
+                                                                    <xs:attribute name="refId" type="xs:string" use="optional" />
+                                                                    <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                                                                    <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                                                                    <xs:attribute name="From" type="xs:string" use="optional" />
+                                                                    <xs:attribute name="LogicalAnd" type="xs:string" use="optional" />
+                                                                    <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+                                                                    <xs:attribute name="To" type="xs:string" use="optional" />
+                                                                  </xs:complexType>
+                                                                </xs:element>
+                                                              </xs:sequence>
+                                                            </xs:complexType>
+                                                          </xs:element>
+                                                        </xs:choice>
+                                                      </xs:sequence>
+                                                      <xs:attribute name="refId" type="xs:string" use="optional" />
+                                                      <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                                                      <xs:attribute name="Description" type="xs:string" use="optional" />
+                                                      <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                                                      <xs:attribute name="ExecutableType" type="xs:string" use="optional" />
+                                                      <xs:attribute name="LocaleID" type="xs:byte" use="optional" />
+                                                      <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+                                                      <xs:attribute name="TaskContact" type="xs:string" use="optional" />
+                                                      <xs:attribute name="ThreadHint" type="xs:unsignedByte" use="optional" />
+                                                      <xs:attribute name="Disabled" type="xs:string" use="optional" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element minOccurs="0" name="PrecedenceConstraints">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element minOccurs="0" maxOccurs="unbounded" name="PrecedenceConstraint">
+                                                    <xs:complexType>
+                                                      <xs:attribute name="refId" type="xs:string" use="optional" />
+                                                      <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                                                      <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                                                      <xs:attribute name="EvalOp" type="xs:unsignedByte" use="optional" />
+                                                      <xs:attribute name="Expression" type="xs:string" use="optional" />
+                                                      <xs:attribute name="From" type="xs:string" use="optional" />
+                                                      <xs:attribute name="LogicalAnd" type="xs:string" use="optional" />
+                                                      <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+                                                      <xs:attribute name="To" type="xs:string" use="optional" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                          <xs:attribute name="refId" type="xs:string" use="optional" />
+                                          <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                                          <xs:attribute name="Description" type="xs:string" use="optional" />
+                                          <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                                          <xs:attribute name="ExecutableType" type="xs:string" use="optional" />
+                                          <xs:attribute name="LocaleID" type="xs:byte" use="optional" />
+                                          <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+                                          <xs:attribute name="TaskContact" type="xs:string" use="optional" />
+                                          <xs:attribute name="ThreadHint" type="xs:unsignedByte" use="optional" />
+                                          <xs:attribute name="Disabled" type="xs:string" use="optional" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" name="PrecedenceConstraints">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="unbounded" name="PrecedenceConstraint">
+                                        <xs:complexType>
+                                          <xs:attribute name="refId" type="xs:string" use="optional" />
+                                          <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                                          <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                                          <xs:attribute name="EvalOp" type="xs:unsignedByte" use="optional" />
+                                          <xs:attribute name="Expression" type="xs:string" use="optional" />
+                                          <xs:attribute name="From" type="xs:string" use="optional" />
+                                          <xs:attribute name="LogicalAnd" type="xs:string" use="optional" />
+                                          <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+                                          <xs:attribute name="To" type="xs:string" use="optional" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="refId" type="xs:string" use="optional" />
+                              <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                              <xs:attribute name="Description" type="xs:string" use="optional" />
+                              <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                              <xs:attribute name="ExecutableType" type="xs:string" use="optional" />
+                              <xs:attribute name="LocaleID" type="xs:byte" use="optional" />
+                              <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+                              <xs:attribute name="Disabled" type="xs:string" use="optional" />
+                              <xs:attribute name="TaskContact" type="xs:string" use="optional" />
+                              <xs:attribute name="ThreadHint" type="xs:unsignedByte" use="optional" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="PrecedenceConstraints">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="0" maxOccurs="unbounded" name="PrecedenceConstraint">
+                            <xs:complexType>
+                              <xs:attribute name="refId" type="xs:string" use="optional" />
+                              <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                              <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                              <xs:attribute name="From" type="xs:string" use="optional" />
+                              <xs:attribute name="LogicalAnd" type="xs:string" use="optional" />
+                              <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+                              <xs:attribute name="To" type="xs:string" use="optional" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="refId" type="xs:string" use="optional" />
+                  <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                  <xs:attribute name="Description" type="xs:string" use="optional" />
+                  <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                  <xs:attribute name="ExecutableType" type="xs:string" use="optional" />
+                  <xs:attribute name="LocaleID" type="xs:byte" use="optional" />
+                  <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="EventHandlers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="EventHandler">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" name="Variables">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="0" name="Variable">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element minOccurs="0" name="VariableValue">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:byte">
+                                        <xs:attribute name="DataType" type="xs:unsignedByte" use="optional" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                              <xs:attribute name="Description" type="xs:string" use="optional" />
+                              <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                              <xs:attribute name="IncludeInDebugDump" type="xs:unsignedShort" use="optional" />
+                              <xs:attribute name="Namespace" type="xs:string" use="optional" />
+                              <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="Executables">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="0" name="Executable">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element minOccurs="0" name="Variables" />
+                                <xs:element minOccurs="0" name="Executables">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" maxOccurs="unbounded" name="Executable">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" name="Variables" />
+                                            <xs:element minOccurs="0" name="ObjectData">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element minOccurs="0" name="SqlTaskData">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element minOccurs="0" name="ResultBinding">
+                                                          <xs:complexType>
+                                                            <xs:attribute name="ResultName" type="xs:string" use="optional" />
+                                                            <xs:attribute name="DtsVariableName" type="xs:string" use="optional" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element minOccurs="0" name="ParameterBinding">
+                                                          <xs:complexType>
+                                                            <xs:attribute name="ParameterName" type="xs:unsignedByte" use="optional" />
+                                                            <xs:attribute name="DtsVariableName" type="xs:string" use="optional" />
+                                                            <xs:attribute name="ParameterDirection" type="xs:string" use="optional" />
+                                                            <xs:attribute name="DataType" type="xs:unsignedByte" use="optional" />
+                                                            <xs:attribute name="ParameterSize" type="xs:byte" use="optional" />
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                      <xs:attribute name="Connection" type="xs:string" use="optional" />
+                                                      <xs:attribute name="SqlStatementSource" type="xs:string" use="optional" />
+                                                      <xs:attribute name="ResultType" type="xs:string" use="optional" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element minOccurs="0" name="Executables">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element minOccurs="0" maxOccurs="unbounded" name="Executable">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element minOccurs="0" name="Variables" />
+                                                        <xs:element minOccurs="0" name="ObjectData">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element minOccurs="0" name="SqlTaskData">
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:element minOccurs="0" name="ParameterBinding">
+                                                                      <xs:complexType>
+                                                                        <xs:attribute name="ParameterName" type="xs:unsignedByte" use="optional" />
+                                                                        <xs:attribute name="DtsVariableName" type="xs:string" use="optional" />
+                                                                        <xs:attribute name="ParameterDirection" type="xs:string" use="optional" />
+                                                                        <xs:attribute name="DataType" type="xs:unsignedByte" use="optional" />
+                                                                        <xs:attribute name="ParameterSize" type="xs:byte" use="optional" />
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                  </xs:sequence>
+                                                                  <xs:attribute name="Connection" type="xs:string" use="optional" />
+                                                                  <xs:attribute name="SqlStatementSource" type="xs:string" use="optional" />
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                      <xs:attribute name="refId" type="xs:string" use="optional" />
+                                                      <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                                                      <xs:attribute name="Description" type="xs:string" use="optional" />
+                                                      <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                                                      <xs:attribute name="ExecutableType" type="xs:string" use="optional" />
+                                                      <xs:attribute name="LocaleID" type="xs:byte" use="optional" />
+                                                      <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+                                                      <xs:attribute name="TaskContact" type="xs:string" use="optional" />
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                          <xs:attribute name="refId" type="xs:string" use="optional" />
+                                          <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                                          <xs:attribute name="Description" type="xs:string" use="optional" />
+                                          <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                                          <xs:attribute name="ExecutableType" type="xs:string" use="optional" />
+                                          <xs:attribute name="LocaleID" type="xs:byte" use="optional" />
+                                          <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+                                          <xs:attribute name="TaskContact" type="xs:string" use="optional" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" name="PrecedenceConstraints">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element minOccurs="0" name="PrecedenceConstraint">
+                                        <xs:complexType>
+                                          <xs:attribute name="refId" type="xs:string" use="optional" />
+                                          <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                                          <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                                          <xs:attribute name="EvalOp" type="xs:unsignedByte" use="optional" />
+                                          <xs:attribute name="Expression" type="xs:string" use="optional" />
+                                          <xs:attribute name="From" type="xs:string" use="optional" />
+                                          <xs:attribute name="LogicalAnd" type="xs:string" use="optional" />
+                                          <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+                                          <xs:attribute name="To" type="xs:string" use="optional" />
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="refId" type="xs:string" use="optional" />
+                              <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                              <xs:attribute name="Description" type="xs:string" use="optional" />
+                              <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                              <xs:attribute name="ExecutableType" type="xs:string" use="optional" />
+                              <xs:attribute name="LocaleID" type="xs:byte" use="optional" />
+                              <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="refId" type="xs:string" use="optional" />
+                  <xs:attribute name="CreationName" type="xs:string" use="optional" />
+                  <xs:attribute name="DTSID" type="xs:string" use="optional" />
+                  <xs:attribute name="EventID" type="xs:unsignedByte" use="optional" />
+                  <xs:attribute name="EventName" type="xs:string" use="optional" />
+                  <xs:attribute name="LocaleID" type="xs:byte" use="optional" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="DesignTimeProperties" type="xs:string" />
+      </xs:sequence>
+      <xs:attribute name="refId" type="xs:string" use="optional" />
+      <xs:attribute name="CreationDate" type="xs:string" use="optional" />
+      <xs:attribute name="CreationName" type="xs:string" use="optional" />
+      <xs:attribute name="CreatorComputerName" type="xs:string" use="optional" />
+      <xs:attribute name="CreatorName" type="xs:string" use="optional" />
+      <xs:attribute name="DTSID" type="xs:string" use="optional" />
+      <xs:attribute name="ExecutableType" type="xs:string" use="optional" />
+      <xs:attribute name="LastModifiedProductVersion" type="xs:string" use="optional" />
+      <xs:attribute name="LocaleID" type="xs:unsignedShort" use="optional" />
+      <xs:attribute name="MaxConcurrentExecutables" type="xs:unsignedByte" use="optional" />
+      <xs:attribute name="ObjectName" type="xs:string" use="optional" />
+      <xs:attribute name="PackageType" type="xs:unsignedByte" use="optional" />
+      <xs:attribute name="VersionBuild" type="xs:unsignedShort" use="optional" />
+      <xs:attribute name="VersionGUID" type="xs:string" use="optional" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
